@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, button } from 'react';
 
 import logo from './logo.svg';
 import SketchCanvas from './Componets/SketchCanvas';
@@ -7,17 +7,22 @@ import './App.css';
 
 
 class App extends Component {
+
+  
   render() {
     return (
       <div className="App">
        
         <header className="App-header">
           <h1 className="App-title">VR Scribble</h1>
+          <button> Download </button>
+          
         </header>
         
-        <div className="Canvas">
+        {/* Canvas Feature */}
+        {/* <div className="Canvas"> 
           <SketchCanvas/>
-        </div>
+        </div> */}
       
 
 
