@@ -29,7 +29,7 @@ class App extends Component {
       console.log('connected!')
     })
     this.socket.on('input_error', () => {
-      console.error(':(')
+      console.error(':( There is an error in input')
     })
     this.socket.on('success', () => {
       console.warn('SUCCCess')
@@ -37,6 +37,8 @@ class App extends Component {
     this.socket.on('connect / disconnect', () => {
       console.error('bye')
     })
+
+    window.alert("Welcome to VR Scribble!\nType or draw the object your teamate needs.")
   }
   
   // For the text in input and submit button
@@ -55,10 +57,8 @@ class App extends Component {
 
   render() {
     
-    
     return (
       <div className="App">
-
         <div className="Typed-Input">
           <input className="Input"
             value={this.state.term}
@@ -66,12 +66,13 @@ class App extends Component {
             placeholder="Type an item..."
           />
           <button onClick={ () => {this._onSubmitClicked()}}> Submit </button>
-        <p>Type or Draw an object</p>
+        <p>Item List:</p>
         {/* Canvas Feature */}
         </div>
         <div className="Canvas"> 
           <SketchCanvas _sendImageData={ this._sendImageData }/>
         </div>
+
      </div>
     );
   }
