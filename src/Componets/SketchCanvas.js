@@ -2,8 +2,8 @@ import React, { Component, button } from 'react';
 import {SketchField, Tools} from 'react-sketch';
 
 function trim(c) {
-  var ctx = c.getContext('2d'),
-    copy = document.createElement('canvas').getContext('2d'),
+	var ctx = c.getContext('2d');
+  var copy = document.createElement('canvas').getContext('2d'),
     pixels = ctx.getImageData(0, 0, c.width, c.height),
     l = pixels.data.length,
     i,
@@ -123,8 +123,8 @@ class SketchCanvas extends Component {
 					</button>
 				</div>
 				<SketchField
-				id=""
-				backgroundColor="#ffffff"
+				lineColor="#BA68C8"
+				backgroundColor="#fff"
 				height="265px"
 				ref={(c) => this._sketch = c} 
 				tool={Tools.Pencil} 
