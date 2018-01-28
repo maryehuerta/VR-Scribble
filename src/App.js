@@ -1,8 +1,14 @@
-import React, { Component, button, input } from 'react';
+import React,
+  { Component,
+    button,
+    input } from 'react';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Link } from 'react-router-dom'
 import SketchCanvas from './Componets/SketchCanvas';
-
+import SocketIOClient from 'socket.io-client';
 import './App.css';
-
 
 class App extends Component {
   constructor(props) {
@@ -10,45 +16,63 @@ class App extends Component {
 		
     //Set the state for SearchBar to an empty string
     this.state = {
-      term: ''
+      term: '',
+
     };
+    this.socket = SocketIOClient('http://52.203.31.93');
+    // this.socket = SocketIOClient('10.209.18.92:3000');
   }
+  
+  componentDidMount() {
+    // Connect to socketio
+    this.socket.on('connect', () => {
+      console.log('connected!')
+    })
+    this.socket.on('input_error', () => {
+      console.error(':(')
+    })
+    this.socket.on('success', () => {
+      console.warn('SUCCCess')
+    })
+    this.socket.on('connect / disconnect', () => {
+      console.error('bye')
+    })
+  }
+  
+  // For the text in input and submit button
   _onInputChange(term) {
 		this.setState({term});
-    console.log(this.state.term)
   }
 
   _onSubmitClicked() {
-    // this.timer = setTimeout(() => {
-    console.log(this.state.term)
-    // }, 1500);
+    const {term} = this.state
+    this.socket.emit('spawn_text', term)
+    this.setState({term: ''})
   }
+  _sendImageData = (url) => {
+    this.socket.emit('spawn_image', url);
+	};
 
   render() {
+    
+    
     return (
       <div className="App">
-       
-        
 
-        <div>
-          <p>Type:</p>
-          <input className="Search-bar-input"
+        <div className="Typed-Input">
+          <input className="Input"
             value={this.state.term}
             onChange={e => this._onInputChange(e.target.value)}
-            placeholder="Add an item..."
+            placeholder="Type an item..."
           />
           <button onClick={ () => {this._onSubmitClicked()}}> Submit </button>
-        </div>
-        
-        <p> or Draw :)</p>
+        <p>Type or Draw an object</p>
         {/* Canvas Feature */}
-        <div className="Canvas"> 
-          <SketchCanvas/>
         </div>
-      
-
-
-      </div>
+        <div className="Canvas"> 
+          <SketchCanvas _sendImageData={ this._sendImageData }/>
+        </div>
+     </div>
     );
   }
 }

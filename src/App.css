@@ -3,8 +3,71 @@ html, body, #root {
   margin: 0;
 }
 
+body {
+  font-size: 20px;
+  color: #212121;
+}
+
+p {
+  margin: 2px;
+}
+
+button {
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #00ACC1;
+  border: none;
+  box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
+  padding: 3px;
+  height: 40px;
+  margin: 6px;
+  color: #212121;
+}
+
 .App {
   text-align: center;
+  background-color: #eeeeee
+}
+
+.Input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: none !important;
+  background-clip: padding-box;
+  outline: none;   
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
+  width: 70vw;
+  background-color: #F9F9F9;
+  box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
+}
+
+.Typed-Input {
+  width: 100vw;
+  background-color: #00838F;
+  /* padding-bottom: 3px; */
+  box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
+  
+}
+
+.Drawing-Buttons {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 14%;
+  z-index: 3;
+  
+}
+
+.Done-Buttons {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 14%;
+  z-index: 3;
+  right: 0%;
+  
 }
 
 .App-header {
@@ -18,8 +81,4 @@ html, body, #root {
 
 .App-intro {
   font-size: large;
-}
-
-.Canvas {
-  border: 1px solid #0d3349;
 }
