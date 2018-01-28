@@ -10,6 +10,7 @@ class SketchCanvas extends Component {
 	_download = () => {
 		const url = this._sketch.toDataURL();
 		this.props._sendImageData(url);
+		this._clear();
 	};
 
 	_clear = () => {
@@ -21,7 +22,7 @@ class SketchCanvas extends Component {
 	render() {
 		 return (
 
-			<div>
+			<div style={{ flex: 1 }}>
 				<div className="Drawing-Buttons">
 					<button style={{backgroundColor: "#BA68C8" }} onClick={this._undo}>
 						Undo
@@ -32,7 +33,7 @@ class SketchCanvas extends Component {
 				</div>
 				<div className="Done-Buttons">
 					<button onClick={this._download}>
-						Done Drawing!
+						Send Drawing
 					</button>
 				</div>
 				<SketchField

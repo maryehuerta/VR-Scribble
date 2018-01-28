@@ -8,6 +8,7 @@ import React,
 //   Link } from 'react-router-dom'
 import SketchCanvas from './Componets/SketchCanvas';
 import SocketIOClient from 'socket.io-client';
+import { ToastContainer, toast } from 'react-toastify';
 import './App.css';
 
 class App extends Component {
@@ -28,17 +29,22 @@ class App extends Component {
     this.socket.on('connect', () => {
       console.log('connected!')
     })
-    this.socket.on('input_error', () => {
+    this.socket.on('input_error', (data) => {
+      toast.error(data.message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
       console.error(':( There is an error in input')
     })
-    this.socket.on('success', () => {
-      console.warn('SUCCCess')
+    this.socket.on('success', (data) => {
+      toast.success(data.message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     })
-    this.socket.on('connect / disconnect', () => {
+    this.socket.on('disconnect', () => {
       console.error('bye')
     })
 
-    window.alert("Welcome to VR Scribble!\nType or draw the object your teamate needs.")
+    // window.alert("Welcome to VR Scribble!\nType or draw the object your teamate needs.")
   }
   
   // For the text in input and submit button
@@ -65,14 +71,12 @@ class App extends Component {
             onChange={e => this._onInputChange(e.target.value)}
             placeholder="Type an item..."
           />
-          <button onClick={ () => {this._onSubmitClicked()}}> Submit </button>
-        <p>Item List:</p>
-        {/* Canvas Feature */}
+          <button onClick={ () => {this._onSubmitClicked()}}>Send Text</button>
         </div>
         <div className="Canvas"> 
           <SketchCanvas _sendImageData={ this._sendImageData }/>
         </div>
-
+        <ToastContainer autoClose={2500} />
      </div>
     );
   }

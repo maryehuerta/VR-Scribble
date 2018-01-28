@@ -1,6 +1,7 @@
 html, body, #root {
   padding: 0;
   margin: 0;
+  background: #F5F5F6;
 }
 
 body {
@@ -13,20 +14,21 @@ p {
 }
 
 button {
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 5px;
-  background-color: #00ACC1;
+  background-color: #455a64;
   border: none;
   box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
-  padding: 3px;
-  height: 40px;
-  margin: 6px;
-  color: #212121;
+  padding: 10px 10px;
+  margin: 0 8px;
+  color: #fff;
 }
 
 .App {
   text-align: center;
-  background-color: #eeeeee
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
 }
 
 .Input {
@@ -37,14 +39,15 @@ button {
   outline: none;   
   border: none;
   border-radius: 3px;
-  font-size: 20px;
+  font-size: 18px;
   width: 70vw;
   background-color: #F9F9F9;
   box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
+  padding: 10px 10px;
 }
 
 .Typed-Input {
-  width: 100vw;
+  padding: 6px 0;
   background-color: #00838F;
   /* padding-bottom: 3px; */
   box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2);
