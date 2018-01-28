@@ -25,6 +25,7 @@ class SketchCanvas extends Component {
 				</button>
 				<SketchField
 				id=""
+				height= "100px"
 				ref={(c) => this._sketch = c} 
 				tool={Tools.Pencil} 
 				color='black'
